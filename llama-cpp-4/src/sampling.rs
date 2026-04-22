@@ -461,12 +461,12 @@ impl LlamaSampler {
         }
     }
 
-    /// Same as [`Self::penalties`], but with `n_vocab`, `special_eos_id`, and `linefeed_id`
-    /// initialized from `model`, `penalize_nl = false`, and `ignore_eos = true`.
+    /// Same as [`Self::penalties`] with sensible defaults:
+    /// `penalty_freq = 0.0` and `penalty_present = 0.0`.
     ///
     /// Parameters:
-    /// - `model`: The model's tokenizer to use to initialize the sampler.
-    /// - `penalty_last_n`: last n tokens to penalize (0 = disable penalty, -1 = context size)
+    /// - `penalty_last_n`: last n tokens to penalize (0 = disable, -1 = context size)
+    /// - `penalty_repeat`: repetition penalty (1.0 = disabled)
     ///
     /// # Panics
     ///
